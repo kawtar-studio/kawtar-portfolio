@@ -1,0 +1,771 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text: #111111;
+    --muted: #646875;
+    --accent: #5b6cff;
+    --line: rgba(0, 0, 0, .08);
+    --glass: rgba(255, 255, 255, .48);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(circle at 5% 0%, rgba(255, 170, 210, .45), transparent 38%),
+        radial-gradient(circle at 95% 5%, rgba(145, 185, 255, .42), transparent 38%),
+        radial-gradient(circle at 50% 80%, rgba(190, 180, 255, .22), transparent 50%),
+        #fbfaff;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(0, 0, 0, .035) 1px, transparent 1px);
+    background-size: 4px 4px;
+    opacity: .13;
+    z-index: -1;
+}
+
+section {
+    position: relative;
+}
+
+section:not(:last-of-type)::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    width: 84%;
+    height: 1px;
+    background: var(--line);
+}
+
+.navbar {
+    padding: 2.2rem 0;
+}
+
+.container {
+    width: min(1200px, 92%);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -.08em;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: .92rem;
+    font-weight: 600;
+    position: relative;
+    transition: .3s;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.hero,
+.about,
+.projects,
+.experience,
+.skills,
+.education,
+.contact {
+    width: min(1200px, 92%);
+    margin: auto;
+}
+
+.hero {
+    min-height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    align-items: center;
+    gap: 7rem;
+    padding: 5rem 0 8rem;
+}
+
+.hero h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(5rem, 12vw, 9rem);
+    font-weight: 600;
+    line-height: .82;
+    letter-spacing: -.055em;
+    margin-bottom: 2.5rem;
+}
+
+.hero-left>p {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.9;
+    margin-bottom: 2.8rem;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.8rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: .9rem;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.primary {
+    color: white;
+    background: linear-gradient(135deg, #6c63ff, #4f8cff);
+    box-shadow: 0 15px 40px rgba(91, 108, 255, .2);
+}
+
+.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 45px rgba(91, 108, 255, .28);
+}
+
+.secondary {
+    color: var(--text);
+    background: rgba(255, 255, 255, .55);
+    border: 1px solid rgba(255, 255, 255, .8);
+    backdrop-filter: blur(20px);
+}
+
+.secondary:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, .8);
+}
+
+.hero-card {
+    padding: 3.2rem;
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, .75);
+    border-radius: 35px;
+    backdrop-filter: blur(30px);
+    box-shadow: 0 25px 70px rgba(90, 100, 200, .09);
+}
+
+.card-title {
+    display: block;
+    color: var(--accent);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.hero-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.45rem;
+    font-weight: 600;
+    line-height: 1.08;
+    margin-bottom: 2rem;
+}
+
+.card-line {
+    width: 100%;
+    height: 1px;
+    background: var(--line);
+    margin-bottom: 2rem;
+}
+
+.about {
+    padding: 10rem 0;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 430px 1fr;
+    gap: 8rem;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    height: 620px;
+    border-radius: 40px;
+    background-image: url("assets/kawtar.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, .45);
+    border: 1px solid rgba(255, 255, 255, .7);
+    box-shadow: 0 25px 70px rgba(90, 100, 200, .09);
+}
+
+.about-content h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 600;
+    line-height: .82;
+    letter-spacing: -.05em;
+    margin-bottom: 3rem;
+}
+
+.about-content p {
+    max-width: 680px;
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 2;
+    margin-bottom: 1.5rem;
+}
+
+.projects,
+.experience,
+.skills,
+.education,
+.contact {
+    padding: 10rem 0;
+}
+
+.projects-header,
+.experience-header,
+.skills-header,
+.education-header,
+.contact-content {
+    text-align: center;
+}
+
+.projects-header,
+.experience-header,
+.skills-header,
+.education-header {
+    margin-bottom: 6rem;
+}
+
+.projects-header h2,
+.experience-header h2,
+.skills-header h2,
+.education-header h2,
+.contact h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 600;
+    line-height: .9;
+    letter-spacing: -.05em;
+    margin-bottom: 1.5rem;
+}
+
+.projects-text,
+.experience-text,
+.skills-text,
+.education-text,
+.contact-text {
+    max-width: 700px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 1.05rem;
+}
+
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.project {
+    min-height: 390px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem;
+    background: var(--glass);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, .75);
+    border-radius: 35px;
+    box-shadow: 0 25px 70px rgba(90, 100, 200, .08);
+    transition: .4s;
+}
+
+.project:hover {
+    transform: translateY(-10px);
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.number {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 5.5rem;
+    line-height: .8;
+    color: rgba(0, 0, 0, .08);
+}
+
+.project-type {
+    color: var(--accent);
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-align: right;
+}
+
+.project-info h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 2.7rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.project-info p {
+    color: var(--muted);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+}
+
+.project-meta span {
+    padding: .45rem .8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .7);
+    border: 1px solid rgba(255, 255, 255, .9);
+    color: var(--text);
+    font-size: .7rem;
+    font-weight: 700;
+}
+
+.experience-card {
+    max-width: 1050px;
+    margin: auto;
+    padding: 4rem;
+    background: var(--glass);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, .75);
+    border-radius: 40px;
+    box-shadow: 0 25px 70px rgba(90, 100, 200, .08);
+}
+
+.experience-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.experience-date {
+    display: block;
+    color: var(--accent);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.experience-top h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+.experience-top h4 {
+    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.experience-content {
+    padding-top: 3rem;
+}
+
+.experience-content>p {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+}
+
+.experience-content ul {
+    list-style: none;
+    display: grid;
+    gap: 1.2rem;
+}
+
+.experience-content li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.experience-content li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .7rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    max-width: 1050px;
+    margin: auto;
+}
+
+.skill {
+    min-height: 150px;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .7rem;
+    background: var(--glass);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, .75);
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(90, 100, 200, .06);
+    transition: .3s;
+}
+
+.skill:hover {
+    transform: translateY(-6px);
+}
+
+.skill strong {
+    font-size: 1.1rem;
+}
+
+.skill small {
+    color: var(--muted);
+    font-size: .75rem;
+}
+
+.education-card {
+    max-width: 950px;
+    margin: auto;
+    text-align: center;
+    padding: 5rem;
+    background: var(--glass);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, .75);
+    border-radius: 40px;
+    box-shadow: 0 25px 70px rgba(90, 100, 200, .08);
+}
+
+.education-year {
+    display: inline-block;
+    color: var(--accent);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.education-card h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: .8rem;
+}
+
+.education-card h4 {
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+}
+
+.education-card p {
+    color: var(--muted);
+    line-height: 2;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+}
+
+.contact h2 {
+    font-size: clamp(5rem, 13vw, 9rem);
+    line-height: .82;
+}
+
+.contact-text {
+    margin-bottom: 4rem;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    position: relative;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.contact-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: .3s;
+}
+
+.contact-links a:hover {
+    color: var(--accent);
+}
+
+.contact-links a:hover::after {
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    padding: 3rem 0 4rem;
+}
+
+.footer p {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+@media (max-width: 1000px) {
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .about-image {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 760px) {
+    .navbar {
+        padding: 1.5rem 0;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem 1.4rem;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 6rem 0 8rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(4.5rem, 20vw, 7rem);
+    }
+
+    .hero-card {
+        padding: 2rem;
+    }
+
+    .hero-card h3 {
+        font-size: 2rem;
+    }
+
+    .buttons {
+        flex-wrap: wrap;
+    }
+
+    .about,
+    .projects,
+    .experience,
+    .skills,
+    .education,
+    .contact {
+        padding: 7rem 0;
+    }
+
+    .about-image {
+        height: 500px;
+    }
+
+    .projects-list {
+        grid-template-columns: 1fr;
+    }
+
+    .project {
+        min-height: 350px;
+        padding: 2rem;
+    }
+
+    .project-info h3 {
+        font-size: 2.3rem;
+    }
+
+    .experience-card {
+        padding: 2rem;
+    }
+
+    .experience-top {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .experience-top h3 {
+        font-size: 2.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .education-card {
+        padding: 3rem 2rem;
+    }
+
+    .education-card h3 {
+        font-size: 2.7rem;
+    }
+
+    .contact-links {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: .8rem 1rem;
+    }
+
+    .nav-links a {
+        font-size: .78rem;
+    }
+
+    .hero {
+        padding-top: 4rem;
+    }
+
+    .hero h1 {
+        font-size: 4.7rem;
+    }
+
+    .hero-left>p {
+        font-size: .95rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .about-image {
+        height: 420px;
+    }
+
+    .projects-header h2,
+    .experience-header h2,
+    .skills-header h2,
+    .education-header h2 {
+        font-size: 3.7rem;
+    }
+
+    .project-top {
+        flex-direction: column;
+    }
+
+    .project-type {
+        text-align: left;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill {
+        min-height: 130px;
+    }
+
+    .experience-card {
+        padding: 1.7rem;
+    }
+
+    .education-card {
+        padding: 2.5rem 1.5rem;
+    }
+}
